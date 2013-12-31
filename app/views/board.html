@@ -1,0 +1,44 @@
+<div class="content">
+  <div>
+    <qrcode version="5" error-correction-level="M" size="100" data="{{pigUrl}}"></qrcode>
+  </div>
+
+  <br>
+
+  <button id="pigLauncher" type="button" class="btn btn-primary" ng-click="launchPig()">Launch Pig</button>
+
+  <hr>
+
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Send link to an email" ng-model="emailToSendLink">
+    </div>
+
+    <button type="button" class="btn btn-primary" ng-click="sendLinkByEmail()">Send</button>
+  </form>
+
+  <hr>
+
+  <br>
+
+  <div ng-show="state == 'registering'">
+    <div class="members" ng-show="members.length &gt; 0">
+      <div ng-repeat="member in members">{{member.name}}</div>
+    </div>
+
+    <br>
+
+    <div class="messages" ng-show="messages.length &gt; 0">
+      <div ng-repeat="message in messages">{{message}}</div>
+    </div>
+  </div>
+
+  <div class="messages" ng-show="state == 'voting'">
+    <div ng-repeat="member in membersWhoHaveVoted">{{member.name}}</div>
+  </div>
+
+  <div class="messages" ng-show="state == 'showVotesResult'">
+    Results:
+    <div ng-repeat="vote in votes track by vote.member.id">{{vote.member.name + ': ' + vote.rate}}</div>
+  </div>
+</div>

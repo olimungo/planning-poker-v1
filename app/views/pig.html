@@ -1,0 +1,82 @@
+<div class="content">
+  <div ng-show="amITheScrumMaster != 'no'">
+    <span>
+      <input type="checkbox" class="switchery pull-left"/>&nbsp;&nbsp;I'm the Scrum Master
+    </span>
+
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+    <span ng-show="amITheScrumMaster == 'yes'">
+      <button type="button" class="btn btn-default" ng-click='stateToExplaining()' ng-show="state == 'registering'">Start</button>
+      <button type="button" class="btn btn-default" ng-click="stateToVote(false)" ng-show="state == 'explaining'">Vote</button>
+      <button type="button" class="btn btn-default" ng-click="stateToVote(true)" ng-show="state == 'discussing'">Re-vote</button>
+      <button type="button" class="btn btn-default" ng-click="stateToExplaining()" ng-show="state == 'discussing'">Next Story</button>
+      <button type="button" class="btn btn-default" ng-click="stateToEnd()" ng-show="state != 'registering'">End</button>
+    </span>
+
+    <hr>
+  </div>
+
+  <br>
+
+  <div ng-show="state == 'registering'">
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="What's your name?" ng-model="member.name">
+      </div>
+
+      <button type="button" class="btn btn-primary" ng-click="rename()">Rename</button>
+    </form>
+
+    <br>
+
+    <div class="members">
+      <div ng-repeat="member in members">{{member.name}}</div>
+    </div>
+
+    <br>
+
+    <div class="messages">
+      <div ng-repeat="message in messages">{{message}}</div>
+    </div>
+  </div>
+
+  <div ng-show="state == 'explaining'">
+    <div class="story-head">Story #{{storyNumber}}</div>
+    <div class="story-sub">(explanations)</div>
+  </div>
+
+  <div ng-show="state == 'voting'">
+    <div class="voting-head">Story #{{storyNumber}}</div>
+    <div class="card" ng-click="vote(0)">0</div>
+    <div class="card" ng-click="vote(.5)">1/2</div>
+    <div class="card" ng-click="vote(1)">1</div>
+    <div class="card" ng-click="vote(2)">2</div>
+    <div class="card" ng-click="vote(3)">3</div>
+    <div class="card" ng-click="vote(5)">5</div>
+    <div class="card" ng-click="vote(8)">8</div>
+    <div class="card" ng-click="vote(20)">20</div>
+    <div class="card" ng-click="vote(40)">40</div>
+    <div class="card" ng-click="vote(100)">100</div>
+    <div class="card" ng-click="vote(-666)">infinite</div>
+    <div class="card" ng-click="vote(-1)">?</div>
+  </div>
+
+  <div ng-show="state == 'waitingEndOfVotes'">
+    <div class="waiting-head">
+      Waiting for other members to vote.
+    </div>
+  </div>
+
+  <div ng-show="state == 'discussing'">
+    <div class="discussing-head">
+      Discussion about the votes.
+    </div>
+  </div>
+
+  <div ng-show="state == 'end'">
+    <div class="end-head">
+      The Planning Poker is over.
+    </div>
+  </div>
+</div>
