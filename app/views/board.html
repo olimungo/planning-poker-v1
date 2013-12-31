@@ -22,18 +22,23 @@
   <br>
 
   <div ng-show="state == 'registering'">
-    <div class="members" ng-show="members.length &gt; 0">
-      <div ng-repeat="member in members">{{member.name}}</div>
-    </div>
-
-    <br>
-
     <div class="messages" ng-show="messages.length &gt; 0">
+      Messages:
       <div ng-repeat="message in messages">{{message}}</div>
     </div>
   </div>
 
+  <div ng-show="state != 'registering'">
+    <div class="members" ng-show="members.length &gt; 0">
+      Members connected:
+      <div ng-repeat="member in members">{{member.name}}</div>
+    </div>
+  </div>
+
+  <br>
+
   <div class="messages" ng-show="state == 'voting'">
+    Members who have voted:
     <div ng-repeat="member in membersWhoHaveVoted">{{member.name}}</div>
   </div>
 
