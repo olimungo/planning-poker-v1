@@ -9,7 +9,7 @@ io.enable('browser client minification');
 
 server.listen(8080);
 
-app.get('/app/*', function (req, res) {
+app.get('/*', function (req, res) {
   res.sendfile(__dirname + '/app/' + req.params);
 });
 

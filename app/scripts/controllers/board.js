@@ -5,7 +5,7 @@ angular.module('planningPokerApp')
   $scope.state = 'registering';
   $scope.messages = [];
 
-  var _server = 'http://' + $location.$$host + ':' + $location.$$port + '/app/#',
+  var _server = 'http://' + $location.$$host + ':' + $location.$$port + '/#',
       _sessionId,
       _state;
 

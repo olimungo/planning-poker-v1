@@ -8,7 +8,7 @@ angular.module('planningPokerApp')
   $scope.amITheScrumMaster = 'maybe';
 
   // TODO: create a directive
-  var Switchery = require('switchery');
+  //var Switchery = require('switchery');
   var elem = document.querySelector('.switchery');
   new Switchery(elem);
 
