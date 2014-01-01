@@ -22,10 +22,29 @@
   <br>
 
   <div ng-show="state == 'registering'">
+    <div class="registering-head">Registering</div>
+
+    <br>
+
     <div class="messages" ng-show="messages.length &gt; 0">
       Messages:
       <div ng-repeat="message in messages">{{message}}</div>
     </div>
+
+    <br>
+  </div>
+
+  <div ng-show="state == 'explaining'">
+    <div class="story-head">Story #{{storyNumber}}</div>
+    <div class="story-sub">(explanations)</div>
+
+    <br>
+  </div>
+
+  <div ng-show="state == 'voting'">
+    <div class="voting-head">Voting</div>
+
+    <br>
   </div>
 
   <div ng-show="state != 'registering'">
@@ -33,17 +52,29 @@
       Members connected:
       <div ng-repeat="member in members">{{member.name}}</div>
     </div>
-  </div>
 
-  <br>
+    <br>
+  </div>
 
   <div class="messages" ng-show="state == 'voting'">
     Members who have voted:
     <div ng-repeat="member in membersWhoHaveVoted">{{member.name}}</div>
+
+    <br>
   </div>
 
-  <div class="messages" ng-show="state == 'showVotesResult'">
-    Results:
-    <div ng-repeat="vote in votes track by vote.member.id">{{vote.member.name + ': ' + vote.rate}}</div>
+  <div ng-show="state == 'discussing'">
+    <div class="discussing-head">
+      Discussion about the votes.
+    </div>
+
+    <br>
+
+    <div class="members">
+      Results:
+      <div ng-repeat="vote in votes track by vote.member.id">{{vote.member.name + ': ' + vote.rate}}</div>
+    </div>
+
+    <br>
   </div>
 </div>

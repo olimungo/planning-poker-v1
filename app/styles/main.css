@@ -56,6 +56,12 @@ body {
   border-radius: 3px;
 }
 
+.registering-head {
+  color: #999;
+  font-size: 40px;
+  text-align: center;
+}
+
 .story-head {
   color: #999;
   font-size: 40px;
@@ -69,6 +75,12 @@ body {
 }
 
 .voting-head {
+  color: #999;
+  font-size: 40px;
+  text-align: center;
+}
+
+.voting-sub {
   color: #999;
   font-size: 20px;
   text-align: center;

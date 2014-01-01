@@ -38,9 +38,12 @@ angular.module('planningPokerApp')
     _state = state;
   });
 
-  socket.on('showVotesResult', function (votes) {
+  socket.on('setStory', function (storyNumber) {
+    $scope.storyNumber = storyNumber;
+  });
+
+  socket.on('setVotesResult', function (votes) {
     $scope.votes = votes;
-    $scope.state = 'showVotesResult';
   });
 
   socket.on('memberHasVoted', function (member) {

@@ -162,7 +162,7 @@ io.sockets.on('connection', function (socket) {
     if (allHaveVoted) {
       socket.session.state = 'discussing';
       io.sockets.in(socket.session.id).emit('setState', socket.session.state);
-      io.sockets.in(socket.session.id).emit('showVotesResult', socket.session.stories[socket.session.currentStoryNumber-1].votes);
+      io.sockets.in(socket.session.id).emit('setVotesResult', socket.session.stories[socket.session.currentStoryNumber-1].votes);
     }
     else {
       socket.emit(socket.session.id).emit('setState', 'waitingEndOfVotes');
